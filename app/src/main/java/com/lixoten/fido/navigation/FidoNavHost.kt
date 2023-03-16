@@ -41,7 +41,8 @@ fun FidoNavHost(
             )
         }
         composable(
-            route = ItemDetailScreenDestination.route + "?myId={myId}",
+            //route = ItemDetailScreenDestination.route + "?myId={myId}",
+            route = ItemDetailScreenDestination.routeWithArgs + "{myId}",
             arguments = listOf(
                 navArgument(
                     "myId"
@@ -51,10 +52,7 @@ fun FidoNavHost(
                 }
             )
         ) { navBackStackEntry ->
-
-            val myInt =
-                navBackStackEntry.arguments?.getInt("myId")
-
+            val myInt = navBackStackEntry.arguments?.getInt("myId")
 
             ItemDetailScreen(
                 myInt = myInt ?: 0,
@@ -63,20 +61,19 @@ fun FidoNavHost(
             )
         }
         composable(
-            route = FourthScreenDestination.route + "?myText={text}",
+            //route = FourthScreenDestination.route + "?myText={text}",
+            route = FourthScreenDestination.routeWithArgs + "{text}",
             arguments = listOf(
                 navArgument(
                     "text"
                 ) {
                     type = NavType.StringType
                     //nullable = true
-                    defaultValue = "zbbb"
+                    //defaultValue = "bbb"
                 }
             )
         ) { navBackStackEntry ->
-
-            val myStrg =
-                navBackStackEntry.arguments?.getString("text")
+            val myStrg = navBackStackEntry.arguments?.getString("text")
 
             FourthScreen(
                 myStrg = myStrg ?: "xx",
