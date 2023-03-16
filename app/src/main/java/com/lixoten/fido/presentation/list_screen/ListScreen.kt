@@ -1,6 +1,5 @@
 package com.lixoten.fido.presentation.list_screen
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -9,7 +8,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import com.lixoten.fido.R
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -17,15 +15,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.lixoten.fido.data.InitialData
 import com.lixoten.fido.model.Item
-import com.lixoten.fido.navigation.NavigationDestination
-import com.lixoten.fido.presentation.item_detail_screen.ItemDetailScreenDestination
+import com.lixoten.fido.navigation.Screen
 
-object ListScreenDestination : NavigationDestination {
-    override val route = "list_scr"
-
-    @StringRes
-    override val titleRes = R.string.app_name
-}
+//object ListScreenDestination : NavigationDestination {
+//    override val route = "list_scr"
+//
+//    @StringRes
+//    override val titleRes = R.string.app_name
+//}
 
 @Composable
 fun ListScreen(
@@ -74,7 +71,8 @@ fun ListScreen(
                         item = item,
                         onItemClick = {
                             navController.navigate(
-                                ItemDetailScreenDestination.routeWithArgs + "${it.id}"
+                                Screen.Detail.routeWithArgs + "${it.id}"
+                                //ItemDetailScreenDestination.routeWithArgs + "${it.id}"
                                 //ItemDetailScreenDestination.route + "?id=${it.id}"
                                 //"item_detail_scr"+"?myId=${it.id}"
                                 //"item_detail_scr?myId=${it.id}"

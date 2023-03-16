@@ -7,11 +7,13 @@ Simple app to demonstrate Compose screen navigation
 - Home Screen to a List Screen. Nothing passed. simple route
 - List Screen to Detail screen. We pass an Integer in the route
 - Detail Screen to Forth Screen. We pass a the inputted string in the route
-- Forth Screen back to Home Screen. We popStack with false 
+- Forth Screen back to Home Screen. We popStack with false
 
 
-We are not using the enum or sealed class for ScreenDestinations
-In each screen we have a XxxxScreenDestination object defined on top of screen class
+We are not using the enum class.  
+We are not using XxxxScreenDestination object defined on top of screen class  
+- logic for this in each screen file is commented out
+We are using a sealed class for ScreenDestinations called Screens.
 
 <p style=float:left">  
   <img src="screenshot_01.png" width="250" />  

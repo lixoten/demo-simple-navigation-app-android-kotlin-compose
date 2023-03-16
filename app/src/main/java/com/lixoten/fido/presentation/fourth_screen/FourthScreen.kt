@@ -1,6 +1,5 @@
 package com.lixoten.fido.presentation.fourth_screen
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -11,18 +10,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.lixoten.fido.R
-import com.lixoten.fido.navigation.NavigationDestination
-import com.lixoten.fido.presentation.home_screen.HomeScreenDestination
+import com.lixoten.fido.navigation.Screen
 
-object FourthScreenDestination : NavigationDestination {
-    override val route = "fourth_scr"
-
-    @StringRes
-    override val titleRes = R.string.fourth_screen_name
-
-    const val routeArg = "?myText="
-    val routeWithArgs = "$route$routeArg"
-}
+//object FourthScreenDestination : NavigationDestination {
+//    override val route = "fourth_scr"
+//
+//    @StringRes
+//    override val titleRes = R.string.fourth_screen_name
+//
+//    const val routeArg = "?myText="
+//    val routeWithArgs = "$route$routeArg"
+//}
 
 @Composable
 fun FourthScreen(
@@ -49,7 +47,10 @@ fun FourthScreen(
 
         Button(
             onClick = {
-                navController.popBackStack(HomeScreenDestination.route, inclusive = false)
+                navController.popBackStack(
+                    //HomeScreenDestination.route,
+                    Screen.Home.route,
+                    inclusive = false)
             }
         ) {
             Text(text = stringResource(id = R.string.home_screen_button))

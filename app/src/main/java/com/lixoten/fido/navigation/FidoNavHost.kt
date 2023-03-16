@@ -9,14 +9,18 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.lixoten.fido.R
 import com.lixoten.fido.presentation.fourth_screen.FourthScreen
-import com.lixoten.fido.presentation.fourth_screen.FourthScreenDestination
 import com.lixoten.fido.presentation.home_screen.HomeScreen
-import com.lixoten.fido.presentation.home_screen.HomeScreenDestination
 import com.lixoten.fido.presentation.item_detail_screen.ItemDetailScreen
-import com.lixoten.fido.presentation.item_detail_screen.ItemDetailScreenDestination
 import com.lixoten.fido.presentation.list_screen.ListScreen
-import com.lixoten.fido.presentation.list_screen.ListScreenDestination
+
+sealed class Screen(val route: String, val resourceId: Int, val routeArg: String = "", val routeWithArgs: String = "$route$routeArg") {
+    object Home : Screen("home_scr", R.string.home_screen_name)
+    object List : Screen("list_scr", R.string.app_name)
+    object Detail : Screen("item_detail_scr", R.string.item_detail_screen_name, routeArg = "?myId=")
+    object Fourth : Screen("fourth_scr", R.string.fourth_screen_name)
+}
 
 @Composable
 fun FidoNavHost(
@@ -25,16 +29,19 @@ fun FidoNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = HomeScreenDestination.route,
+        //startDestination = HomeScreenDestination.route,
+        startDestination = Screen.Home.route,
         modifier = modifier
     ) {
-        composable(route = HomeScreenDestination.route) {
+        //composable(route = HomeScreenDestination.route) {
+        composable(route = Screen.Home.route) {
             HomeScreen(
                 modifier = Modifier.padding(8.dp),
                 navController = navController,
             )
         }
-        composable(route = ListScreenDestination.route) {
+        //composable(route = ListScreenDestination.route) {
+        composable(route = Screen.List.route) {
             ListScreen(
                 modifier = Modifier.padding(8.dp),
                 navController = navController,
@@ -42,7 +49,8 @@ fun FidoNavHost(
         }
         composable(
             //route = ItemDetailScreenDestination.route + "?myId={myId}",
-            route = ItemDetailScreenDestination.routeWithArgs + "{myId}",
+            //route = ItemDetailScreenDestination.routeWithArgs + "{myId}",
+            route = Screen.Detail.routeWithArgs + "{myId}",
             arguments = listOf(
                 navArgument(
                     "myId"
@@ -62,7 +70,8 @@ fun FidoNavHost(
         }
         composable(
             //route = FourthScreenDestination.route + "?myText={text}",
-            route = FourthScreenDestination.routeWithArgs + "{text}",
+            //route = FourthScreenDestination.routeWithArgs + "{text}",
+            route = Screen.Fourth.routeWithArgs + "{text}",
             arguments = listOf(
                 navArgument(
                     "text"

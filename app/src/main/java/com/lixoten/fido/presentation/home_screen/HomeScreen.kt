@@ -1,6 +1,5 @@
 package com.lixoten.fido.presentation.home_screen
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -10,15 +9,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.lixoten.fido.R
-import com.lixoten.fido.navigation.NavigationDestination
-import com.lixoten.fido.presentation.list_screen.ListScreenDestination
+import com.lixoten.fido.navigation.Screen
 
-object HomeScreenDestination : NavigationDestination {
-    override val route = "home_scr"
-
-    @StringRes
-    override val titleRes = R.string.home_screen_name
-}
+//object HomeScreenDestination : NavigationDestination {
+//    override val route = "home_scr"
+//
+//    @StringRes
+//    override val titleRes = R.string.home_screen_name
+//}
 
 @Composable
 fun HomeScreen(
@@ -37,7 +35,8 @@ fun HomeScreen(
         Button(
             onClick = {
                 navController.navigate(
-                    ListScreenDestination.route
+                    //ListScreenDestination.route
+                    Screen.List.route
                 )
             }
         ) {
